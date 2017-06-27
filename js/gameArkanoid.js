@@ -249,6 +249,8 @@ function gameStart() {
     }
     if (bunchKey.KEY_SPACE) {
       gameContext.ball.isFlying = true;
+      gameContext.ball.directionX = DIRECTION_LEFT;
+      gameContext.ball.directionY = DIRECTION_UP;
     }
 
     let currentTimeFrame = Date.now();
@@ -343,7 +345,7 @@ function collisionBallAndPlatform(ball, platform) {
   }
 }
 
-function collisionBallAndBrick(ball, brick) {//доделать физику попытаться сделать так чтобы коллизию мячика с платфоромй и с кирпичиками одинаково(хотя бы попытаться)
+function collisionBallAndBrick(ball, brick) {
   const coordX = ball.x + ball.radius;
   const coordY = ball.y + ball.radius;
   const coordXbelow = ball.x - ball.radius;
