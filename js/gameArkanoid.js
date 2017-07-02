@@ -314,7 +314,7 @@ const gameLoop = function(canvasContext, gameContext) {
   gameContext.lastTimeFrame = currentTimeFrame;
 
   processGamePhysics(gameContext, deltaTime);
-  if (isLevelOver) {
+  if (isLevelOver(gameContext)) {
     processTransitionNextLevel(gameContext);
   }
   processDraw(canvasContext, gameContext);
