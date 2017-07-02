@@ -14,6 +14,7 @@ const INITIAL_POSITION_BALL_X = WIDTH_CANVAS / 2;
 const INITIAL_POSITION_BALL_Y = 505;
 const INITIAL_POSITION_PLATFORM_X = INITIAL_POSITION_BALL_X - LENGTH_PLATFORM / 2;
 const INITIAL_POSITION_PLATFORM_Y = 515;
+const INITIAL_LEVEL_GAME = 0;
 
 class Ball {
   constructor(x, y) {
@@ -133,115 +134,7 @@ const gameContext = {
 
   platform: new Platform(INITIAL_POSITION_PLATFORM_X, INITIAL_POSITION_PLATFORM_Y),
 
-  bricks: {
-    level1: [
-      new Brick(725, 250, "#3fab12"),
-      new Brick(700, 230, "#3fab12"),
-      new Brick(750, 230, "#3fab12"),
-      new Brick(675, 210, "#3fab12"),
-      new Brick(725, 210, "#3fab12"),
-      new Brick(775, 210, "#3fab12"),
-      new Brick(650, 190, "#3fab12"),
-      new Brick(700, 190, "#3fab12"),
-      new Brick(750, 190, "#3fab12"),
-      new Brick(800, 190, "#3fab12"),
-      new Brick(625, 170, "#3fab12"),
-      new Brick(675, 170, "#3fab12"),
-      new Brick(725, 170, "#3fab12"),
-      new Brick(775, 170, "#3fab12"),
-      new Brick(825, 170, "#3fab12"),
-      new Brick(600, 150, "#3fab12"),
-      new Brick(650, 150, "#3fab12"),
-      new Brick(700, 150, "#3fab12"),
-      new Brick(750, 150, "#3fab12"),
-      new Brick(800, 150, "#3fab12"),
-      new Brick(850, 150, "#3fab12"),
-      new Brick(575, 130, "#3fab12"),
-      new Brick(625, 130, "#3fab12"),
-      new Brick(675, 130, "#3fab12"),
-      new Brick(725, 130, "#3fab12"),
-      new Brick(775, 130, "#3fab12"),
-      new Brick(825, 130, "#3fab12"),
-      new Brick(875, 130, "#3fab12"),
-      new Brick(550, 110, "#3fab12"),
-      new Brick(600, 110, "#3fab12"),
-      new Brick(650, 110, "#3fab12"),
-      new Brick(700, 110, "#3fab12"),
-      new Brick(750, 110, "#3fab12"),
-      new Brick(800, 110, "#3fab12"),
-      new Brick(850, 110, "#3fab12"),
-      new Brick(900, 110, "#3fab12"),
-      new Brick(525, 90, "#3fab12"),
-      new Brick(575, 90, "#3fab12"),
-      new Brick(625, 90, "#3fab12"),
-      new Brick(675, 90, "#3fab12"),
-      new Brick(725, 90, "#3fab12"),
-      new Brick(775, 90, "#3fab12"),
-      new Brick(825, 90, "#3fab12"),
-      new Brick(875, 90, "#3fab12"),
-      new Brick(925, 90, "#3fab12"),
-      new Brick(25, 90, "#3fab12"),
-      new Brick(25, 110, "#3fab12"),
-      new Brick(25, 130, "#3fab12"),
-      new Brick(25, 150, "#3fab12"),
-      new Brick(25, 170, "#3fab12"),
-      new Brick(25, 190, "#3fab12"),
-      new Brick(25, 210, "#3fab12"),
-      new Brick(25, 230, "#3fab12"),
-      new Brick(25, 250, "#3fab12"),
-      new Brick(75, 230, "#3fab12"),
-      new Brick(75, 210, "#3fab12"),
-      new Brick(75, 190, "#3fab12"),
-      new Brick(75, 170, "#3fab12"),
-      new Brick(75, 150, "#3fab12"),
-      new Brick(75, 130, "#3fab12"),
-      new Brick(75, 110, "#3fab12"),
-      new Brick(125, 130, "#3fab12"),
-      new Brick(125, 150, "#3fab12"),
-      new Brick(125, 170, "#3fab12"),
-      new Brick(125, 190, "#3fab12"),
-      new Brick(125, 210, "#3fab12"),
-      new Brick(175, 190, "#3fab12"),
-      new Brick(175, 170, "#3fab12"),
-      new Brick(175, 150, "#3fab12"),
-      new Brick(225, 170, "#3fab12"),
-      new Brick(1425, 90, "#3fab12"),
-      new Brick(1425, 110, "#3fab12"),
-      new Brick(1425, 130, "#3fab12"),
-      new Brick(1425, 150, "#3fab12"),
-      new Brick(1425, 170, "#3fab12"),
-      new Brick(1425, 190, "#3fab12"),
-      new Brick(1425, 210, "#3fab12"),
-      new Brick(1425, 230, "#3fab12"),
-      new Brick(1425, 250, "#3fab12"),
-      new Brick(1375, 230, "#3fab12"),
-      new Brick(1375, 210, "#3fab12"),
-      new Brick(1375, 190, "#3fab12"),
-      new Brick(1375, 170, "#3fab12"),
-      new Brick(1375, 150, "#3fab12"),
-      new Brick(1375, 130, "#3fab12"),
-      new Brick(1375, 110, "#3fab12"),
-      new Brick(1325, 130, "#3fab12"),
-      new Brick(1325, 150, "#3fab12"),
-      new Brick(1325, 170, "#3fab12"),
-      new Brick(1325, 190, "#3fab12"),
-      new Brick(1325, 210, "#3fab12"),
-      new Brick(1275, 190, "#3fab12"),
-      new Brick(1275, 170, "#3fab12"),
-      new Brick(1275, 150, "#3fab12"),
-      new Brick(1225, 170, "#3fab12"),
-    ],
-
-    level2: [
-      new Brick(700, 120, "#0d1dab"),
-      new Brick(750, 120, "#3fab12"),
-      new Brick(700, 140, "#ab2c33"),
-      new Brick(750, 160, "#fffa82"),
-      new Brick(650, 120, "#3fab12"),
-      new Brick(650, 160, "#fffa82"),
-      new Brick(700, 180, "#0d1dab"),
-    ],
-  },
+  bricks: [],
 
   keyMap: {
     KEY_LEFT: false,
@@ -250,7 +143,7 @@ const gameContext = {
   },
 
   lastTimeFrame: Date.now(),
-  currentLevel: 1,
+  currentLevel: INITIAL_LEVEL_GAME,
 };
 
 function processDraw(canvasContext, gameContext) {
@@ -258,7 +151,7 @@ function processDraw(canvasContext, gameContext) {
   drawBorderGamesField(canvasContext);
   gameContext.ball.draw(canvasContext);
   gameContext.platform.draw(canvasContext);
-  for (const brick of gameContext.currentLevel) {
+  for (const brick of gameContext.bricks) {
     if (!brick.isBroken){
       brick.draw(canvasContext);
     }
@@ -268,7 +161,7 @@ function processDraw(canvasContext, gameContext) {
 function processGamePhysics(gameContext, deltaTime) {
   collisionBallAndBorder(gameContext.ball, gameContext.platform);
   collisionBallAndPlatform(gameContext.ball, gameContext.platform);
-  for (const brick of gameContext.currentLevel) {
+  for (const brick of gameContext.bricks) {
     collisionBallAndBrick(gameContext.ball, brick);
   }
 
@@ -277,7 +170,7 @@ function processGamePhysics(gameContext, deltaTime) {
 }
 
 function isLevelOver(gameContext) {
-  for (const brick of gameContext.currentLevel) {
+  for (const brick of gameContext.bricks) {
     if (!brick.isBroken) {
       return false
     }
@@ -285,13 +178,184 @@ function isLevelOver(gameContext) {
   return true;
 }
 
-function processTransitionNextLevel(gameContext) {
+function createGameLevel1() {
+  return [
+    new Brick(725, 250, "#3fab12"),
+    new Brick(700, 230, "#3fab12"),
+    new Brick(750, 230, "#3fab12"),
+    new Brick(675, 210, "#3fab12"),
+    new Brick(725, 210, "#3fab12"),
+    new Brick(775, 210, "#3fab12"),
+    new Brick(650, 190, "#3fab12"),
+    new Brick(700, 190, "#3fab12"),
+    new Brick(750, 190, "#3fab12"),
+    new Brick(800, 190, "#3fab12"),
+    new Brick(625, 170, "#3fab12"),
+    new Brick(675, 170, "#3fab12"),
+    new Brick(725, 170, "#3fab12"),
+    new Brick(775, 170, "#3fab12"),
+    new Brick(825, 170, "#3fab12"),
+    new Brick(600, 150, "#3fab12"),
+    new Brick(650, 150, "#3fab12"),
+    new Brick(700, 150, "#3fab12"),
+    new Brick(750, 150, "#3fab12"),
+    new Brick(800, 150, "#3fab12"),
+    new Brick(850, 150, "#3fab12"),
+    new Brick(575, 130, "#3fab12"),
+    new Brick(625, 130, "#3fab12"),
+    new Brick(675, 130, "#3fab12"),
+    new Brick(725, 130, "#3fab12"),
+    new Brick(775, 130, "#3fab12"),
+    new Brick(825, 130, "#3fab12"),
+    new Brick(875, 130, "#3fab12"),
+    new Brick(550, 110, "#3fab12"),
+    new Brick(600, 110, "#3fab12"),
+    new Brick(650, 110, "#3fab12"),
+    new Brick(700, 110, "#3fab12"),
+    new Brick(750, 110, "#3fab12"),
+    new Brick(800, 110, "#3fab12"),
+    new Brick(850, 110, "#3fab12"),
+    new Brick(900, 110, "#3fab12"),
+    new Brick(525, 90, "#3fab12"),
+    new Brick(575, 90, "#3fab12"),
+    new Brick(625, 90, "#3fab12"),
+    new Brick(675, 90, "#3fab12"),
+    new Brick(725, 90, "#3fab12"),
+    new Brick(775, 90, "#3fab12"),
+    new Brick(825, 90, "#3fab12"),
+    new Brick(875, 90, "#3fab12"),
+    new Brick(925, 90, "#3fab12"),
+    new Brick(25, 90, "#3fab12"),
+    new Brick(25, 110, "#3fab12"),
+    new Brick(25, 130, "#3fab12"),
+    new Brick(25, 150, "#3fab12"),
+    new Brick(25, 170, "#3fab12"),
+    new Brick(25, 190, "#3fab12"),
+    new Brick(25, 210, "#3fab12"),
+    new Brick(25, 230, "#3fab12"),
+    new Brick(25, 250, "#3fab12"),
+    new Brick(75, 230, "#3fab12"),
+    new Brick(75, 210, "#3fab12"),
+    new Brick(75, 190, "#3fab12"),
+    new Brick(75, 170, "#3fab12"),
+    new Brick(75, 150, "#3fab12"),
+    new Brick(75, 130, "#3fab12"),
+    new Brick(75, 110, "#3fab12"),
+    new Brick(125, 130, "#3fab12"),
+    new Brick(125, 150, "#3fab12"),
+    new Brick(125, 170, "#3fab12"),
+    new Brick(125, 190, "#3fab12"),
+    new Brick(125, 210, "#3fab12"),
+    new Brick(175, 190, "#3fab12"),
+    new Brick(175, 170, "#3fab12"),
+    new Brick(175, 150, "#3fab12"),
+    new Brick(225, 170, "#3fab12"),
+    new Brick(1425, 90, "#3fab12"),
+    new Brick(1425, 110, "#3fab12"),
+    new Brick(1425, 130, "#3fab12"),
+    new Brick(1425, 150, "#3fab12"),
+    new Brick(1425, 170, "#3fab12"),
+    new Brick(1425, 190, "#3fab12"),
+    new Brick(1425, 210, "#3fab12"),
+    new Brick(1425, 230, "#3fab12"),
+    new Brick(1425, 250, "#3fab12"),
+    new Brick(1375, 230, "#3fab12"),
+    new Brick(1375, 210, "#3fab12"),
+    new Brick(1375, 190, "#3fab12"),
+    new Brick(1375, 170, "#3fab12"),
+    new Brick(1375, 150, "#3fab12"),
+    new Brick(1375, 130, "#3fab12"),
+    new Brick(1375, 110, "#3fab12"),
+    new Brick(1325, 130, "#3fab12"),
+    new Brick(1325, 150, "#3fab12"),
+    new Brick(1325, 170, "#3fab12"),
+    new Brick(1325, 190, "#3fab12"),
+    new Brick(1325, 210, "#3fab12"),
+    new Brick(1275, 190, "#3fab12"),
+    new Brick(1275, 170, "#3fab12"),
+    new Brick(1275, 150, "#3fab12"),
+    new Brick(1225, 170, "#3fab12"),
+  ]
+}
+
+function createGameLevel2() {
+  return [
+    new Brick(450, 150, "#ab0b0c"),
+    new Brick(450, 170, "#ab0b0c"),
+    new Brick(450, 190, "#ab0b0c"),
+    new Brick(450, 210, "#ab0b0c"),
+    new Brick(450, 230, "#ab0b0c"),
+    new Brick(450, 250, "#ab0b0c"),
+    new Brick(450, 270, "#ab0b0c"),
+    new Brick(450, 290, "#ab0b0c"),
+    new Brick(400, 170, "#0d1dab"),
+    new Brick(400, 190, "#0d1dab"),
+    new Brick(400, 210, "#0d1dab"),
+    new Brick(400, 230, "#0d1dab"),
+    new Brick(400, 250, "#0d1dab"),
+    new Brick(400, 270, "#0d1dab"),
+    new Brick(350, 190, "#15c400"),
+    new Brick(350, 210, "#15c400"),
+    new Brick(350, 230, "#15c400"),
+    new Brick(350, 250, "#15c400"),
+    new Brick(500, 210,"#fffa82"),
+    new Brick(500, 230, "#fffa82"),
+    new Brick(550, 210, "#fffa82"),
+    new Brick(550, 230, "#fffa82"),
+    new Brick(600, 210, "#fffa82"),
+    new Brick(600, 230, "#fffa82"),
+    new Brick(650, 210, "#fffa82"),
+    new Brick(650, 230, "#fffa82"),
+    new Brick(700, 210, "#fffa82"),
+    new Brick(700, 230, "#fffa82"),
+    new Brick(750, 210, "#fffa82"),
+    new Brick(750, 230, "#fffa82"),
+    new Brick(800, 210, "#fffa82"),
+    new Brick(800, 230, "#fffa82"),
+    new Brick(850, 210, "#fffa82"),
+    new Brick(850, 230, "#fffa82"),
+    new Brick(900, 210, "#fffa82"),
+    new Brick(900, 230, "#fffa82"),
+    new Brick(950, 210, "#fffa82"),
+    new Brick(950, 230, "#fffa82"),
+    new Brick(1000, 210, "#fffa82"),
+    new Brick(1000, 230, "#fffa82"),
+    new Brick(1050, 150, "#ab0b0c"),
+    new Brick(1050, 170, "#ab0b0c"),
+    new Brick(1050, 190, "#ab0b0c"),
+    new Brick(1050, 210, "#ab0b0c"),
+    new Brick(1050, 230, "#ab0b0c"),
+    new Brick(1050, 250, "#ab0b0c"),
+    new Brick(1050, 270, "#ab0b0c"),
+    new Brick(1050, 290, "#ab0b0c"),
+    new Brick(1100, 170, "#0d1dab"),
+    new Brick(1100, 190, "#0d1dab"),
+    new Brick(1100, 210, "#0d1dab"),
+    new Brick(1100, 230, "#0d1dab"),
+    new Brick(1100, 250, "#0d1dab"),
+    new Brick(1100, 270, "#0d1dab"),
+    new Brick(1150, 190, "#15c400"),
+    new Brick(1150, 210, "#15c400"),
+    new Brick(1150, 230, "#15c400"),
+    new Brick(1150, 250, "#15c400"),
+  ]
+}
+
+function createGameLevel(gameContext) {
   gameContext.ball.x = INITIAL_POSITION_BALL_X;
   gameContext.ball.y = INITIAL_POSITION_BALL_Y;
   gameContext.ball.isFlying = false;
-  gameContext.platform.x = INITIAL_POSITION_BALL_X;
-  gameContext.platform.y = INITIAL_POSITION_BALL_Y;
-  gameContext.currentLevel += 1;
+  gameContext.platform.x = INITIAL_POSITION_PLATFORM_X;
+  gameContext.platform.y = INITIAL_POSITION_PLATFORM_Y;
+  gameContext.currentLevel = gameContext.currentLevel % 2 + 1;
+  switch (gameContext.currentLevel){
+    case 1:
+      gameContext.bricks = createGameLevel1();
+    break;
+    case 2:
+      gameContext.bricks = createGameLevel2();
+    break;
+  }
 }
 
 const gameLoop = function(canvasContext, gameContext) {
@@ -314,8 +378,8 @@ const gameLoop = function(canvasContext, gameContext) {
   gameContext.lastTimeFrame = currentTimeFrame;
 
   processGamePhysics(gameContext, deltaTime);
-  if (isLevelOver) {
-    processTransitionNextLevel(gameContext);
+  if (isLevelOver(gameContext)) {
+    createGameLevel(gameContext);
   }
   processDraw(canvasContext, gameContext);
   requestAnimationFrame(function() {
@@ -350,7 +414,6 @@ function gameStart(gameContext) {
   window.addEventListener("keydown", (key) => {keyControl(key, true)});
   window.addEventListener("keyup", (key) => {keyControl(key, false)});
 
-  gameContext.currentLevel = gameContext.bricks.level1;
   gameLoop(context, gameContext);
 }
 
