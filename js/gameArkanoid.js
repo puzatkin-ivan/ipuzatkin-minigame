@@ -485,11 +485,11 @@ function collisionBallAndBrick(ball, brick) {
     if (coordX >= brick.x && coordXbelow <= brick.x + Brick.WIDTH) {
       if (ball.directionX === DIRECTION.RIGHT) {
         if (ball.directionY === DIRECTION.DOWN) {
-          if (coordY >= brick.y && coordY <= brick.y + 5 && coordX >= brick.x && coordX <= brick.x + 3) {
+          if (coordY >= brick.y && coordY <= brick.y && coordX >= brick.x && coordX <= brick.x) {
             ball.setDirectionX(DIRECTION.LEFT);
             ball.setDirectionY(DIRECTION.UP);
             brick.isBroken = true;
-          } else if (coordY >= brick.y && coordY <= brick.y + 5) {
+          } else if (coordY >= brick.y && coordY <= brick.y) {
             ball.setDirectionY(DIRECTION.UP);
             brick.isBroken = true;
           } else if (ball.y > brick.y && ball.y <= brick.y + Brick.HEIGHT) {
@@ -498,11 +498,11 @@ function collisionBallAndBrick(ball, brick) {
             brick.isBroken = true;
           }
         } else if (ball.directionY === DIRECTION.UP) {
-          if (coordYbelow >= brick.y && coordYbelow <= brick.y + 5 && coordX >= brick.x && coordX <= brick.x + 3) {
+          if (coordYbelow >= brick.y && coordYbelow <= brick.y && coordX >= brick.x && coordX <= brick.x) {
             ball.setDirectionX(DIRECTION.LEFT);
             ball.setDirectionY(DIRECTION.DOWN);
             brick.isBroken = true;
-          } else if (coordYbelow >= brick.y && coordYbelow <= brick.y + 5) {
+          } else if (coordYbelow >= brick.y && coordYbelow <= brick.y) {
             ball.setDirectionY(DIRECTION.DOWN);
             brick.isBroken = true;
           } else if (ball.y > brick.y && ball.y <= brick.y + Brick.HEIGHT) {
@@ -513,11 +513,11 @@ function collisionBallAndBrick(ball, brick) {
         }
       } else if (ball.directionX === DIRECTION.LEFT) {
         if (ball.directionY === DIRECTION.DOWN) {
-          if (coordY >= brick.y && coordY <= brick.y + 5 && coordXbelow >= brick.x && coordXbelow <= brick.x + 3) {
+          if (coordY >= brick.y && coordY <= brick.y && coordXbelow >= brick.x && coordXbelow <= brick.x) {
             ball.setDirectionX(DIRECTION.RIGHT);
             ball.setDirectionY(DIRECTION.UP);
             brick.isBroken = true;
-          } else if (coordY >= brick.y && coordY <= brick.y + 5) {
+          } else if (coordY >= brick.y && coordY <= brick.y) {
             ball.setDirectionY(DIRECTION.UP);
             brick.isBroken = true;
           } else if (ball.y > brick.y && ball.y <= brick.y + Brick.HEIGHT) {
@@ -526,11 +526,11 @@ function collisionBallAndBrick(ball, brick) {
             brick.isBroken = true;
           }
         } else if (ball.directionY === DIRECTION.UP) {
-          if (coordYbelow >= brick.y && coordYbelow <= brick.y + 5 && coordX >= brick.x && coordX <= brick.x + 3) {
+          if (coordYbelow >= brick.y && coordYbelow <= brick.y && coordX >= brick.x && coordX <= brick.x) {
             ball.setDirectionX(DIRECTION.RIGHT);
             ball.setDirectionY(DIRECTION.DOWN);
             brick.isBroken = true;
-          } else if (coordYbelow >= brick.y && coordYbelow <= brick.y + 5) {
+          } else if (coordYbelow >= brick.y && coordYbelow <= brick.y) {
             ball.setDirectionY(DIRECTION.DOWN);
             brick.isBroken = true;
           } else if (ball.y > brick.y && ball.y <= brick.y + Brick.HEIGHT) {
