@@ -1,4 +1,4 @@
-import {Brick} from "../../ModulesWithClasses/Brick";
+import {Brick} from "../../object/Brick";
 
 export function createGameLevel1() {
   return [

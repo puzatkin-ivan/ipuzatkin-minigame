@@ -1,13 +1,12 @@
-import {GameContext} from "../ModulesWithClasses/GameContext";
-import * as constant from "../constants";
+import {GameContext} from "../object/GameContext";
 import {gameLoop} from "./gameLoop";
 
 export function gameStart(gameContext: GameContext) {
   const canvas = <HTMLCanvasElement>document.getElementById("canvas");
   const context: CanvasRenderingContext2D = canvas.getContext("2d");
 
-  canvas.width = constant.WIDTH_CANVAS;
-  canvas.height = constant.HEIGHT_CANVAS;
+  canvas.width = gameContext.gameField.WIDTH_CANVAS;
+  canvas.height = gameContext.gameField.HEIGHT_CANVAS;
 
   const keyControl = function(key, isPressed) {
     const definitionCodeKey = key.code;

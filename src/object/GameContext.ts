@@ -1,11 +1,12 @@
 import {Ball} from "./Ball";
-import {INITIAL_LEVEL_GAME, INITIAL_POSITION_BALL, INITIAL_POSITION_PLATFORM} from "../constants";
 import {Brick} from "./Brick";
 import {Platform} from "./Platform";
+import {GameField} from "./GameField";
 
 export class GameContext {
-  public ball = new Ball(INITIAL_POSITION_BALL.X, INITIAL_POSITION_BALL.Y);
-  public platform = new Platform(INITIAL_POSITION_PLATFORM.X, INITIAL_POSITION_PLATFORM.Y);
+  public ball = new Ball();
+  public platform = new Platform();
+  public gameField = new GameField();
   public bricks: Brick[] = [];
   public keyMap = {
     KEY_LEFT: false,
@@ -13,7 +14,8 @@ export class GameContext {
     KEY_SPACE: false,
   };
   public lastTimeFrame = Date.now();
-  public currentLevel = INITIAL_LEVEL_GAME;
+  private INITIAL_LEVEL_GAME = 0;
+  public currentLevel = this.INITIAL_LEVEL_GAME;
 
   public isLevelOver() {
     for (const brick of this.bricks) {

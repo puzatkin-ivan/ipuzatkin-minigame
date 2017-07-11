@@ -1,21 +1,17 @@
-import * as CONSTANT from "../constants";
+import {Direction} from "../enum";
 
 export class Ball {
   public _x: number;
   public _y: number;
-  public _isFlying: boolean;
-  public _radius: number;
-  public _directionX: string;
-  public _directionY: string;
+  public _isFlying = false;
+  public _radius = 10;
+  public _directionX: Direction;
+  public _directionY: Direction;
 
-  constructor(x: number, y: number) {
-    this._x = x;
-    this._y = y;
-    this._isFlying = false;
+  constructor() {
   }
 
   draw(context: CanvasRenderingContext2D) {
-    this._radius = 10;
     context.beginPath();
     context.lineWidth = 2;
     context.fillStyle = "#923b13";
@@ -34,20 +30,20 @@ export class Ball {
     context.closePath();
   }
 
-  setDirectionX(direction: string) {
+  setDirectionX(direction: Direction) {
     this._directionX = direction;
   }
 
-  setDirectionY(direction: string) {
+  setDirectionY(direction: Direction) {
     this._directionY = direction;
   }
 
   move(deltaTime: number) {
-    const SPEED: number= 200;
+    const SPEED: number = 200;
     const DELTA_MOVE: number = SPEED * deltaTime / 1000;
     if (this._isFlying) {
-      this._x += (this._directionX === CONSTANT.DIRECTION.RIGHT) ? DELTA_MOVE : -DELTA_MOVE;
-      this._y += (this._directionY === CONSTANT.DIRECTION.DOWN) ? DELTA_MOVE : -DELTA_MOVE;
+      this._x += (this._directionX === Direction.RIGHT) ? DELTA_MOVE : -DELTA_MOVE;
+      this._y += (this._directionY === Direction.DOWN) ? DELTA_MOVE: -DELTA_MOVE;
     }
   }
 }
