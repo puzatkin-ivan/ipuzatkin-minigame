@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "minigame",
   "scripts": {
-    "start": "tsc --project ./"
+    "build:client": "tsc --project ./tsconfig.client.json",
+    "build:server": "tsc --project ./tsconfig.server.json",
+    "run:server": "node ./src/server.js",
+    "start": "npm run build:client && npm run build:server && npm run run:server "
   },
   "repository": {
     "type": "git",
@@ -12,6 +15,9 @@
   "author": "Ivan Puzatkin <puzatkin1998@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@types/express": "^4.0.36",
+    "@types/node": "^8.0.7",
+    "express": "^4.15.3",
     "typescript": "^2.4.1"
   }
 }
