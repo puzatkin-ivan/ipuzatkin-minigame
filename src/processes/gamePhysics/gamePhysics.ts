@@ -2,43 +2,43 @@ import {GameContext} from "../../object/GameContext";
 import {Ball} from "../../object/Ball";
 import {Platform} from "../../object/Platform";
 import {GameField} from "../../object/GameField";
-import {Direction} from "../../enum";
+import {Direction} from "../../direction";
 import {Brick} from "../../object/Brick";
 
 export function processGamePhysics(gameContext: GameContext, deltaTime: number) {
-  collision.ballAndBorder(gameContext.ball, gameContext.platform, gameContext.gameField);
+  collision.ballAndBorder(gameContext.ball, gameContext.platform);
   collision.ballAndPlatform(gameContext.ball, gameContext.platform);
   for (const brick of gameContext.bricks) {
     collision.ballAndBrick(gameContext.ball, brick);
   }
 
   gameContext.ball.move(deltaTime);
-  gameContext.platform.move(gameContext.ball, deltaTime, gameContext.gameField);
+  gameContext.platform.move(gameContext.ball, deltaTime);
 }
 
 namespace collision {
-  export function ballAndBorder(ball: Ball, platform: Platform, gameField: GameField) {
+  export function ballAndBorder(ball: Ball, platform: Platform) {
     const ballLeft = ball._x;
     const ballRight = ball._x + ball._radius;
 
-    if (ballLeft < ball._radius + gameField.WIDTH_BORDER_GAMES_FIELD) {
+    if (ballLeft < ball._radius + GameField.WIDTH_BORDER_GAMES_FIELD) {
       ball.setDirectionX(Direction.RIGHT);
-      ball._x = ball._radius + gameField.WIDTH_BORDER_GAMES_FIELD;
-    } else if (ballRight >= gameField.WIDTH_CANVAS - gameField.WIDTH_BORDER_GAMES_FIELD) {
+      ball._x = ball._radius + GameField.WIDTH_BORDER_GAMES_FIELD;
+    } else if (ballRight >= GameField.WIDTH_CANVAS - GameField.WIDTH_BORDER_GAMES_FIELD) {
       ball.setDirectionX(Direction.LEFT);
-      ball._x = gameField.WIDTH_CANVAS - ball._radius - gameField.WIDTH_BORDER_GAMES_FIELD;
+      ball._x = GameField.WIDTH_CANVAS - ball._radius - GameField.WIDTH_BORDER_GAMES_FIELD;
     }
 
     const ballUp = ball._y;
-    const ballDown = ball._y + ball._radius - gameField.WIDTH_BORDER_GAMES_FIELD;
+    const ballDown = ball._y + ball._radius - GameField.WIDTH_BORDER_GAMES_FIELD;
 
-    if (ballUp < ball._radius + gameField.WIDTH_BORDER_GAMES_FIELD) {
+    if (ballUp < ball._radius + GameField.WIDTH_BORDER_GAMES_FIELD) {
       ball.setDirectionY(Direction.DOWN);
-      ball._y = ball._radius + gameField.WIDTH_BORDER_GAMES_FIELD;
-    } else if (ballDown >= gameField.HEIGHT_CANVAS) {
+      ball._y = ball._radius + GameField.WIDTH_BORDER_GAMES_FIELD;
+    } else if (ballDown >= GameField.HEIGHT_CANVAS) {
       ball.setDirectionY(Direction.UP);
       ball.setDirectionX(Direction.LEFT);
-      platform.installCoordinates(ball, gameField);
+      platform.installCoordinates(ball);
     }
   }
 

@@ -3,7 +3,7 @@ import {createGameLevel1} from "./gameLevel1";
 import {createGameLevel2} from "./gameLevel2";
 
 export function transitionNextLevel(gameContext: GameContext) {
-  gameContext.platform.installCoordinates(gameContext.ball, gameContext.gameField);
+  gameContext.platform.installCoordinates(gameContext.ball);
   gameContext.currentLevel = gameContext.currentLevel % 2 + 1;
   createLevelGame(gameContext);
 }

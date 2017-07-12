@@ -1,5 +1,5 @@
 import {Ball} from "./Ball";
-import {Direction} from "../enum";
+import {Direction} from "../direction";
 import {GameField} from "./GameField";
 
 export class Platform {
@@ -30,11 +30,11 @@ export class Platform {
     context.closePath();
   }
 
-  move(ball: Ball, deltaTime: number, gameField: GameField) {
+  move(ball: Ball, deltaTime: number) {
     const STEP: number = 500;
     const DELTA_MOVE: number = STEP * deltaTime / 1000;
-    const MAX_POSITION: number = gameField.WIDTH_CANVAS - this._length - gameField.WIDTH_BORDER_GAMES_FIELD;
-    const MIN_POSITION: number = gameField.WIDTH_BORDER_GAMES_FIELD;
+    const MAX_POSITION: number = GameField.WIDTH_CANVAS - this._length - GameField.WIDTH_BORDER_GAMES_FIELD;
+    const MIN_POSITION: number = GameField.WIDTH_BORDER_GAMES_FIELD;
     if (this._directionPlatform === Direction.RIGHT) {
       this._x += DELTA_MOVE;
       if (this._x > MAX_POSITION) {
@@ -52,10 +52,10 @@ export class Platform {
     this._directionPlatform = Direction.Close;
   }
 
-  installCoordinates(ball: Ball, gameField: GameField) {
-    this._x = gameField.WIDTH_CANVAS / 2 - this._length / 2;
-    this._y = 515;
-    ball._x = gameField.WIDTH_CANVAS / 2;
+  installCoordinates(ball: Ball) {
+    this._x = GameField.WIDTH_CANVAS / 2 - this._length / 2;
+    this._y = GameField.HEIGHT_CANVAS - 100;
+    ball._x = GameField.WIDTH_CANVAS / 2;
     ball._y = this._y - ball._radius;
     ball._isFlying = false;
   }

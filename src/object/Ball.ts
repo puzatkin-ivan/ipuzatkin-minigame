@@ -1,4 +1,4 @@
-import {Direction} from "../enum";
+import {Direction} from "../direction";
 
 export class Ball {
   public _x: number;

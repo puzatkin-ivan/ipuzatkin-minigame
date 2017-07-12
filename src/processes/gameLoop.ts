@@ -1,7 +1,8 @@
 import {GameContext} from "../object/GameContext";
 import {processGamePhysics} from './gamePhysics/gamePhysics';
 import {transitionNextLevel} from "./transitionBetweenLevels/transitionNextLevel";
-import {Direction} from "../enum";
+import {Direction} from "../direction";
+import {GameField} from "../object/GameField";
 
 export function gameLoop(canvasContext: CanvasRenderingContext2D, gameContext: GameContext) {
   if (gameContext.keyMap.KEY_LEFT) {
@@ -26,7 +27,14 @@ export function gameLoop(canvasContext: CanvasRenderingContext2D, gameContext: G
   if (gameContext.isLevelOver()) {
     transitionNextLevel(gameContext);
   }
-  gameContext.gameField.draw(canvasContext, gameContext);
+  GameField.draw(canvasContext);
+  gameContext.ball.draw(canvasContext);
+  gameContext.platform.draw(canvasContext);
+  for (const brick of gameContext.bricks) {
+    if (!brick._isBroken){
+      brick.draw(canvasContext);
+    }
+  }
   requestAnimationFrame(function() {
     gameLoop(canvasContext, gameContext);
   });
