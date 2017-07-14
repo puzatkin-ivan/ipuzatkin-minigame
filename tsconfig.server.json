@@ -6,6 +6,6 @@
     "outDir": "./bin/server/build"
   },
   "files": [
-    "./src/server.ts"
+    "./src/main_server.ts"
   ]
 }
