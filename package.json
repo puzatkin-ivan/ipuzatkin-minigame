@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "minigame",
   "scripts": {
-    "start": "tsc --project ./"
+    "start": "npm run-script build && npm run-script start:server",
+    "build:server": "tsc --project ./tsconfig.server.json",
+    "build:client": "tsc --project ./tsconfig.client.json",
+    "build": "npm run-script build:server && npm run-script build:client",
+    "start:server": "cd bin/server/build && node server.js"
   },
   "repository": {
     "type": "git",
