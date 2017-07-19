@@ -1,12 +1,13 @@
 import {GameContext} from "../object/GameContext";
+import {GameField} from "../object/GameField";
 import {gameLoop} from "./gameLoop";
 
 export function gameStart(gameContext: GameContext) {
   const canvas = <HTMLCanvasElement>document.getElementById("canvas");
   const context: CanvasRenderingContext2D = canvas.getContext("2d");
 
-  canvas.width = gameContext.gameField.WIDTH_CANVAS;
-  canvas.height = gameContext.gameField.HEIGHT_CANVAS;
+  canvas.width = GameField.WIDTH_CANVAS;
+  canvas.height = GameField.HEIGHT_CANVAS;
 
   const keyControl = function(key, isPressed) {
     const definitionCodeKey = key.code;
@@ -23,9 +24,6 @@ export function gameStart(gameContext: GameContext) {
         break;
     }
   };
-
-  window.addEventListener("keydown", (key) => {keyControl(key, true)});
-  window.addEventListener("keyup", (key) => {keyControl(key, false)});
 
   gameLoop(context, gameContext);
 }

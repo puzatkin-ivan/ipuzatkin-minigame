@@ -1,12 +1,10 @@
 import {Ball} from "./Ball";
 import {Brick} from "./Brick";
 import {Platform} from "./Platform";
-import {GameField} from "./GameField";
 
 export class GameContext {
   public ball = new Ball();
   public platform = new Platform();
-  public gameField = new GameField();
   public bricks: Brick[] = [];
   public keyMap = {
     KEY_LEFT: false,

@@ -1,7 +1,10 @@
+import {GameContext} from "../object/GameContext";
 export namespace GameServer {
-    export function initGameServer(socketServer: SocketIO.Server) {
-        socketServer.on("connection", (socket: SocketIO.Socket) => {
-           console.log(socket.id);
-        })
-    }
+  let gameContext = new GameContext;
+
+  export function initGameServer(socketServer: SocketIO.Server) {
+    socketServer.on("connection", (socket: SocketIO.Socket) => {
+      socket.emit('gameContext', gameContext);
+    })
+  }
 }

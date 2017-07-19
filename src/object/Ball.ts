@@ -1,4 +1,4 @@
-import {Direction} from "../enum";
+import {Direction} from "../direction";
 
 export class Ball {
   public _x: number;
@@ -9,6 +9,8 @@ export class Ball {
   public _directionY: Direction;
 
   constructor() {
+    this._x = 250;
+    this._y = 250;
   }
 
   draw(context: CanvasRenderingContext2D) {
